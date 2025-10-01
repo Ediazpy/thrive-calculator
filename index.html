@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thrive Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    form {
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      max-width: 400px;
+      background: white; 
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      text-align: left;
+    }
+    input {
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+     <!-- Embedded base64 Thrive logo -->
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARIAAACOCAMAAADKOnedAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAB7UExURQAAAMnMxyssLG1xcAIDArW4tnF1c6zRarndY+3u7NXX0xkZGd/
+  h3G9vb1thXqnPZ6avqWVqaHR4dVtbW2dpaA4ODpKdlrDZUKHLVzQ1NE9cVIWRiRA7IkhLSSBHMHiEfb3gbYqRjb/dgtfqsTRWQGZpZ83mmAAAAAAmCsZUvXoAAAAndFJOUwA25LT9Rq6ysgEh6A84ybVjwIejm/V9zMjR0pP+ufOjrG
+  iXVeIgebW1LWQAABLISURBVHja5Z2NgqIqFIA1xVmMTK3cTU1zahrf/wkvBxRRQXG2aWsue+9Uiihf548DmmUtLVi8Ib59udxu7+/nX1DO7++32+Vi+8T6PxWMWxoUBqD4DeXX71/sP/aeorldbIJ5dfy/AIJ9SqPt/7jwHWfA0peqn
+  8qD2BeOg6nKWcXk3ID59d5S+cFAqHwwHm2/Zwqj4v9kSSGXG+NhQqNTol83u7NBP0dC4A8VkIU8uGb9VCiWfzsv5tFiaaH8KBH5IpBzJyq/buQnESGXL0uIYPP79/nyc0QEbMhfAWmh3Pyf4XrI7Q5AGii/Xl5QwEeAzpzvQaQRFPLy
+  RO4lIsL3vL+y8oBdfb+biPSU50VDFHrZ/nkgIm/wb1DYxgWh2+/fl9eVE0HkTVO27L8eHSPlub0ykX7/B5+2mn1vb3PK805e0o742W9dl7dvE3Izj+VFmVi2k57Pc92eLT+GCWZEdtl5CYntAiovxwSIRIHnBH/OywRjq9qwVWF5MSa
+  UCKJEvDS+/FqiJNN4FEzwq/jiRka8oCTW+5+3+5VRwu32IvGJIOLRyNv+85dMtnoq51dhAt7XSSkRh6XBLn+2d5KR7QgKj2NfAQkpKZEo2LAP+C6qs5Vfe0yeP/1IxzU4ASJp2Oag3+5pTgDLVoLy+0xeQHWq1KHOJhFabm/vzARkpW
+  dOnt79BhF3NuLLuyOTbWduBZPLs6uN71BnE0U9Fb+7nGy78I2OLP0nF5OMGhIHDEmPydvd/M7YIz91xEYvLGSGpBxepP/+5/4GhZuU51Ydtdo0Wfo/9xcU7nueW3XUatMoz/t3QHl79sAepY23UekUvrx9A5S35w7YiAdqEyDt/guVlD
+  /b7d2hgIV9zsJsa1BirfGF9SVUVIyFZQvlD/yTC/287XF9Xgvb2FY0U+tye+ddHHSsB6HtPes+3f7eFajV7BVMnjKdRGUgCUBIsvkogdgUy/tb/7uXpGDLEdxgvefFpsX3iSi+79uwMPSdg+Vpt6cUE3DAkYGQiPpsxevlBuW9AcAZAA
+  WKQMzn6fSQgQU1BDl5znhNCIkU32vKaBwgtmHtUEF5MCyOZKKy/Y3aSrODDlVDukubOAbjuf5xSxKgu4md4RpgbN/OMCt66w21nsPdMCEp/0X6gtzOtNgj//avY5KSCokThPIC+Wy3nym7WNT2y6b2bj+Kzz9isW8QlFWwI96n1+s1gA
+  pxHKLNxwQUMm4Khmbtle5CPHXMrju9v9/pe8UD1wiMqyNfMVl/zpaDcJ6bg9g4Uj79vtO4SXeVevEGK6FQJ9A1FXZIKrFxpRgv2Z/j02M00SuXNZpRIaHGtQf3OI/k2CFZfbp829oe9oPua082QLLTtLsOYqL2i81p3M+D1JTtiu9IMT
+  aomr3u56mzC8jV92rF2nRavekhcd1JIG6HBG/EtSqRNPsUSPqncKFw2qCU2AyJf2wv6FPhH3biFHtLRuLqerUSxjVyfCMpcaekxJ2QEtdUSjiVk62Xks8eEty1k4wV7iQuu5KGuFokICU0SqJ64zigN/hvFecuSBoqazTonxoJrRKL43
+  Z4eAhRyug0EtCbaKQ3XHHaMhJuvvUbkIiTuUw5+uGVRnEsJH9JAymx15LtxSZIDkJvBtk0stJoi8zzXkhcd71eHw5upzbsdUWMbAl0uxWekcupDu0+ybrKSNaDcjjSMyVUb0ZxmuyEXQ2d9d2kZM8GhKjarboz0JddT3U0SLCs5CP72i
+  lVbKmQrG04da9AmMVMSTLoSkUjp6ZU+0N7lYddJTbvK3wvJLH4JqqVzMSWVUeLpLWv7tC+YvkclaWyJSuVu2dx2tCUDAJQcSmrjbLCHZC0PSF7Sc/3cg+1SNpgzR3aVyZACh8lS4mvCAqVpqTfLX2PzeISUyR8sCjCFRcu2MCWgH11Ra
+  iELaWZOcp9n0bSmBLP14/tZSFAyqH+/aQEpupPncVCRkj8tTj9oBudde3ZpWkkjSnJsJmUoO+UkoYJ6pDEJkgwPuni11g0FZsjgajEcaJkakA+h+SetgQMQDcePGETKZH8SqU8hduNEw2QIGpKnGnr+lApkXsoR4OTSMJPlUGmOijcc/
+  +6ppEw6+oEaCpx81Ap4T10x/Z1Aol9kOyrbBVW48HHPBJmXScdzuOlBAmjKA/39bYEBsPK+LUSCZZ+1GeCxPGnsnuPlhIpQjdDIg2GkSIz4Pbt9BwSNgyOvCkkD5eSxUiU9lWOXQeKNo2k5COcySUNTy4lkvVhGjIa/NCo2+5r5jSSCJ
+  Bk5IVtCd1ji2DtKIX0Xf7zhBcg8SKWdyXPJCVLPU4XyvSP6GLXvbUAifNsUgIT1ALJipghsfaqnHci1GkQwc0gocWLMvw0UsIHOYui195guGrawtIAcmh65pE400gebUukKQWjMU4zN9HpSJtnOOkGyAZInseWwPBamvIKTZF8HCXBwi
+  J2ba2rtURKIjbEeQ5bgnETY7RicjDLl4CyBWP72nU8thbbkrtKyWBtwtLkQCxl1XYGWbX+UNGV/HZjXWl74SSSYf6HIynvJSXjadmP4zwSkfj9QCc594rMkVQD79JZV0UucDr32iC5V/S62hD/o1dMpCQjtKJvh/GxNwdwwpapLRGD4d
+  a+yo5rNL0jIbHla8WSE/b8u0gJTP0fh8WdR3KAeqtDb1bEHc56TyGRB8OtLd0cJf3TSYl8vesdaaPXueSAuZRMTSNPIXGVU6CxtQBJ19qqkYnNQWddOyT9Ex99UyRLpEQ/rz45AdpMqbryQbG1CElnX1Ev76qwrv0J0G5G90S6YZ8Thd
+  8oJV+YJqe6VFkLkPQGw5WI8V2No9XMCTdIIF8yg+TvpOQrSD7XsPIKL0AiL+3Z95Pa7tH6CpLgPhn6uyGJFUuzZpB0ef0Tv7t3NQ7xzZBAonEmMHmglLjqbIGJ4nSDYb5sout2ZYqkMa8hQzJYg/R1KXGPu1Ov7E4GTnjFDtrtDqrFIK
+  ZIkr59FbGbYgWb5IRP3fUemyVyMGkBxgTdKXrdYNIrhgE9VMXSEgBkvnxPXEQb17hVz+EoAlQpVPMt+WJ51BcxlzM5t7UkevUVyw6MF1Ogg5RRxwulpBk5tAHNTjIt1qKA3meBiTc1KbxwJPzFYR/UJStpmm8ZEjmpsOfJkk9NoKYd9j
+  VnJJkwJvgb8iXWspHwTlfXQEo6+3rqhfPhDBKFVQrYKGfinoIHZtWQLkNtgqRqrQfMdjZZfjZSwtaifAmfJ/dGK7P+TVbNX+sXJ84i2axbg+qLYFapgnNI+GqKqcjkcVk1admZi5Z6nG4V1nojXLJiGDyPBIzJzMjvUVKC5UzQSHNmkX
+  T2NZQMS7wcCUQmzqTmPDJDbyvXqRoiibuFjV3+CH0BCYq4G/bIP7clXSqM1raXehxxV8Vn2WXslS5lDgkpuRvW+pzHSUlvjirRrqFXI5EGwwGY2sZM4y8gsZLU4dGabiXSI2f7bNX9M4ZSItZhHeHOJFc1G2yIhGnOhIF96GxftwDiYC
+  9VHNHimohVkdWXkDSaozewD50Tjkezu+ZIYrEyvr27zbWV5nMOCR8N09BEkyF47Jxwt+r1hJdKCQ/W6O6wdT4rZZfmkcBtwq2Y4H8tJZLm+EuR8BWM9EzxTjkVZIoEFnTA01z4svF/LCVyqn0wYJtF0gVr7nE1kZ4zkRKeNKFikqrF5L
+  GrkHqagxdJicjKu25H9StIcLOuUWdNHry+RHeTgAmSqpdUdZW3yRoigWfMOfC8LGVs8lgpwXtZc/AiJGjdzzMfydeQwOnY2E8Twj56FZIY1y9ZTCEGw72yUz8GxASJZTMx0eQIHryisac5yxRneNO+xoUaIbEaMXHSsUF69IpGTaLeCM
+  muPz+DTJCoH2CChZiowvpHr3vtHqywWzbGkW8kUEQ26kkL3WC3GfwpVefxa+jFvSRrslBKpIdXqHIuYyQfOikBy+S1qjNSwAd7HGmtsxytGSHBx8HU8gySw2m/65XTXnbEjZiMvM6DpaS3qFHyOUZI+hPN4SwS9Q32nYVlYT2Yk8EP+zz
+  alohLdsWSImMksRyq6WpNIVn3J/54DDu82/7RtkS+a8RFCsX5nEAiP61Fazvnnkwh1Uy516FBbI+J9BCbuZUDX3vKzRBJ/1EBMpLPaSRYBDVT1tUYieR1+iaWCQFfzTUhJU2FMZKjWImGxmM0/iyQkRkMxfK17v4aLiV8qx4JPn2KR4zo
+  rCtDoikDKeFPoR8zEbndidSNpgKW9ukfDzVKkErPCkE9CZiY6G2+1v28dbWmHg91GIodeywSmFgpisWb46F5uMdKIyVdhfE0udg3FLF9s2PtxsOUohW3+w7Ssiq/O81Gi6Ra66+lGx0e1poCzy/pN8h+BwbMicyE2KKoH2U1VQFr9/ntd
+  jQ2g12LvklTyiNtbFBnXBR52GjM5G8K/rujMP7bpv6+hKlgknTPRph8MqRBhfvBeniR3A4wIT/659YNkXRMIGWfffzA34v+AhOcwMPGOZMIfaucNJrWUIdzt/rXH5SO3/a1VHrobLt/ZJNaxcbaelq9Z3IScTnxgijE36s82GwfXnzEHW
+  0ZoAK/0xqUzP+3phB/QxeNP0lbwzRomQQewt/TUxLGcUjgFf5aOAztsAppSZBN/1ZhEyOgJA4/+E8EwFvCNoVVFbYXZidxgsQ7OMpnfy0/RM0LYg1XlY2a41mTtD6bNGbVu1Y00xhO63i8IPgGQYFnHl3zPK9T2/KvV8gKk+Lq5azUaVb
+  U9CWHQR9x2NsQgusU3l7pdZd1XhR5vWcXlbCD4PdJsrrO6zrGVliXDGbu8Jcook2wWlFhQ5M1a9LK6isQCuuM/g819livO7aXCuUJHIb2vlTsvD6FYVQXPikKjqSgYuPV1yQLkzoKE8qFdiygG8Iyr0OKrg7C0Ktz23LqfRXHRZ2wDucx
+  qmo3seK6oIcW0D+3h6SOqn2S1lEcoyD3eZMZNJnULtQI3cTPiwRVcKy+kEQojxOkJborFLizt455zifDrZQU8FWw7zepQYT9IvdRnTJJzwsS8+ut3NQqCxB72g26L3FhHLRJMzsvfHZU7dutlHgcSddmkJOmSVqdhFSoEpCSELnQ+Mc1m
+  A5kI/hVhwZKkCFyF31ph175lbvd69VOWySkvfysZmPdKs9A0FnOr06uBb8C+kVnuS+QoDpPYJhEypqPQeh3PkQSAXzWZlD4Tt406aIwz670E0Xi53WGKGd/2v7ZWcAFpQ8FLwfBDyF+NxSjveWEygIFPSReh8Qv0uLKMyYVfRvxQ+nXnd
+  RlmCRXpjhWda3d3NtQbeL98WsPaZGkhX298j6EeRjmtl1faYWMmjZqTGZ+nQAsfBUJi8KgVB+jwZipvyOEyGPeqih5O06B0ivkv/AQCbbsIrjCPkgXFFER8CMyQEKLmzc3Q5CqpIYXeTW7qQF0jyGhFjxnL7aE5Hi1QdpYqFFTJKG1dxN
+  AQh0fbaVO5o0gFRRHglImrf4sCfTJBtEBvbjjhaVmCq4Gfp76aWMDrkMpoS/NO+tUo5RpC0iTn1EpD/MchAsnDAwq0izPGikKbW527DzlUuJ1SOBg3qRT24CEXOuUqh6bv7KL2kDzUdlCgb9UarKweVr8OLAeg8LkA4VZQkOOoSUq3QB+
+  aDSlnqKsTzB7w7rRmkLqdHFY59ivCwQP+KxTaiOuG1gzRc2pB3TCGmwh9twdZkCpR6KxNqZ+h8DXjgnGTLVgu4SEdE1iOA/4vhwlnw4Mcq+10VdMxbKDAu4nKpNwM2NsMfERoo7UiWhtRZKIInALx8ldj8A1p97V5SGCGzHxKIIAlAHo1
+  IGTumBlPTePnMKNiBUx75EyL0E9TOo44JBR7qYeFf6Q0srp8deEfuuBVzBmVEEAyYrCbJv0LWaRaW03IfT80EpmZgz8BkpLJQqo2aVfPdr4ZCQVvr9BNADNspKOBq6pl+g8FaERBA0QCJsvoV8Uf/ABKuCiwmtBS7DhkTTd6YGTwNSg1tc
+  9AZsMUSeL8eDOCOpKi4T9FDKtClNziB1PjatNDy544icpoPun1IdfsWya5NusMk+aVjJs6jf9kNqUSKLiAJbIK7OEKgWNlzebDQ2ZEyBRMmQpLVTHWn1RrxvkeUTYZyO7TQL6/C8tzYiT8PQfXEhzhAWui33kzfOEJOa5SHYIe+YxbCQiV
+  0lYZe70miabbfQw+Gr7aU0D9UFJ1FBpjC3FAn0HNA5/WE7zKWLbHcED4ylnhMcj+WUDu/GP8WDFOebawwsHjzydYIclo8J4ePwv4xPxIoHykobHVO6RZS+kVIlsoKW0Je52iiOkz72GRNUuPTJ8Nn2vnkjY4N7lLIgviB1mTGNaLv3icHU
+  qQ+Tj5Z76ZQt1JEnJus7AdIVvKpPOfPwfcLRiRsPQMCm9VmGaAj7IJv8n8RjHHTZqfUwMsdjIIb9m+Q8Xit/nx9Gb1QAAAABJRU5ErkJggg==" alt="Thrive Logo">
+
+
+  <h2>Thrive Calculator</h2>
+
+  <form id="calcForm">
+    <label for="totalSale">Total Sale:</label>
+<input type="number" id="totalSale" step="0.01" min="0" required placeholder="Enter total sale">
+
+<label for="totalTips">Total Tips:</label>
+<input type="number" id="totalTips" step="0.01" min="0" value="0" placeholder="Enter 0 if none">
+
+<label for="totalParts">Total Parts:</label>
+<input type="number" id="totalParts" step="0.01" min="0" value="0" placeholder="Enter 0 if none">
+
+
+    <button type="submit">Calculate</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById("calcForm");
+    const resultDiv = document.getElementById("result");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Get values safely
+      const totalSale = parseFloat(document.getElementById("totalSale").value) || 0;
+      const totalTips = parseFloat(document.getElementById("totalTips").value) || 0;
+      const totalParts = parseFloat(document.getElementById("totalParts").value) || 0;
+
+      let commission;
+      if (totalParts >= 35) {
+        commission = ((totalSale - totalParts) / 2) + totalParts + totalTips;
+      } else {
+        commission = (totalSale / 2) + totalTips;
+      }
+
+      resultDiv.textContent = "Your commission: $" + commission.toFixed(2);
+    });
+  </script>
+</body>
+</html>
